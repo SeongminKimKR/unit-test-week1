@@ -68,11 +68,16 @@ public class ChampionTest {
         String endString = "point";
         assertThat(sampleString1, anyOf(startsWith(startString), containsString(endString)));
         assertThat(sampleString2, is(endsWith(endString)));
+
+        //assertThat(sampleString1, is(endsWith(endString)));
+        // Focus != point
     }
 
     //부동소수점 범위 closeTo 테스트
     @Test
     public void testForFloatingPoint() {
+        // 오차 범위가 0.2이므로 2.8~3.2 까지 테스트가 통과함
+
         assertThat(3.14, closeTo(3, 0.2));
     }
 
@@ -86,17 +91,17 @@ public class ChampionTest {
     @Test
     public void shouldChampionCountFive() {
         assertTrue(championList.size() == 5);
-        assertThat(championList.size(), is(5));
+        //assertThat(championList.size(), is(6)); 5가 아닌 값을 넣으면 테스트 실패
         assertThat(championList, hasSize(5));
     }
 
     //서폿 챔피언은 타릭이어야 한다라는 조건으로 테스트 코드 작성
     @Test
     public void shouldSupportChampionIsTaric() {
-        Champion supportChamp = new Champion("타릭", "바텀");
-        assertThat("타릭", is(supportChamp.getName()));
-        assertThat("타릭", is(equalTo(supportChamp.getName())));
-        assertThat("타릭", equalTo(supportChamp.getName()));
+        Champion supportChamp = new Champion("루시안", "바텀");
+        assertThat("루시안", is(supportChamp.getName()));
+        assertThat("루시안", is(equalTo(supportChamp.getName())));
+        assertThat("루시안", equalTo(supportChamp.getName()));
     }
 
     //hasProperty 활용하여 속성이 포함되어 있는지 테스트
