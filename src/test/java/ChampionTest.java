@@ -81,6 +81,11 @@ public class ChampionTest {
         assertThat(3.14, closeTo(3, 0.2));
     }
 
+    @Test
+    public void testForFloatingPoint2() {
+        assertThat(1.5, closeTo(1, 0.6));
+    }
+
     //anything 테스트
     @Test
     public void shouldNotErrorGetReference() {
@@ -98,10 +103,10 @@ public class ChampionTest {
     //서폿 챔피언은 타릭이어야 한다라는 조건으로 테스트 코드 작성
     @Test
     public void shouldSupportChampionIsTaric() {
-        Champion supportChamp = new Champion("루시안", "바텀");
-        assertThat("루시안", is(supportChamp.getName()));
-        assertThat("루시안", is(equalTo(supportChamp.getName())));
-        assertThat("루시안", equalTo(supportChamp.getName()));
+        Champion MidChamp = new Champion("피즈", "미드");
+        assertThat("피즈", is(MidChamp.getName()));
+        assertThat("피즈", is(equalTo(MidChamp.getName())));
+        assertThat("피즈", equalTo(MidChamp.getName()));
     }
 
     //hasProperty 활용하여 속성이 포함되어 있는지 테스트
@@ -144,4 +149,12 @@ public class ChampionTest {
         assertThat("다리우스", is(champName));
     }
 
+    @Test
+    public void shouldMidChampionIsDarius() {
+        Optional<Champion> filterdChampion = championList.stream()
+                .filter(c -> c.getPosition().equals("미드"))
+                .findFirst();
+        String champName = filterdChampion.get().getName();
+        assertThat("르블랑", is(champName));
+    }
 }
